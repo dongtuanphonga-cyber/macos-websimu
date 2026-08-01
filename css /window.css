@@ -1,0 +1,876 @@
+/* ==========================================================
+   WebOS
+   window.css
+   Part 1
+========================================================== */
+
+/* =========================
+   WINDOW LAYER
+========================= */
+
+#window-layer{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:100;
+
+}
+
+/* =========================
+   WINDOW
+========================= */
+
+.window{
+
+    position:absolute;
+
+    width:900px;
+
+    height:600px;
+
+    min-width:420px;
+
+    min-height:260px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(35px);
+
+    -webkit-backdrop-filter:blur(35px);
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.15);
+
+    pointer-events:auto;
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease,
+        box-shadow .25s ease;
+
+}
+
+/* =========================
+   ACTIVE WINDOW
+========================= */
+
+.window.active{
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.18);
+
+}
+
+/* =========================
+   INACTIVE WINDOW
+========================= */
+
+.window.inactive{
+
+    opacity:.88;
+
+    filter:saturate(.85);
+
+}
+
+/* =========================
+   TITLE BAR
+========================= */
+
+.titlebar{
+
+    width:100%;
+
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+    background:rgba(255,255,255,.08);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    cursor:grab;
+
+}
+
+.titlebar:active{
+
+    cursor:grabbing;
+
+}
+
+/* =========================
+   WINDOW TITLE
+========================= */
+
+.title{
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    color:white;
+
+    pointer-events:none;
+
+}
+
+/* =========================
+   TRAFFIC LIGHTS
+========================= */
+
+.traffic{
+
+    position:absolute;
+
+    left:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.traffic span{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    transition:.18s;
+
+}
+
+/* Close */
+
+.close{
+
+    background:#ff5f57;
+
+}
+
+/* Minimize */
+
+.minimize{
+
+    background:#febc2e;
+
+}
+
+/* Maximize */
+
+.maximize{
+
+    background:#28c840;
+
+}
+
+.traffic span:hover{
+
+    transform:scale(1.12);
+
+    filter:brightness(1.08);
+
+}
+/* ==========================================================
+   WebOS
+   window.css
+   Part 2
+========================================================== */
+
+/* =========================
+   WINDOW CONTENT
+========================= */
+
+.window .content{
+
+    flex:1;
+
+    width:100%;
+
+    overflow:auto;
+
+    background:rgba(248,248,248,.82);
+
+    color:#1f1f1f;
+
+    padding:18px;
+
+}
+
+/* =========================
+   DARK CONTENT
+========================= */
+
+.window.dark .content{
+
+    background:rgba(35,35,35,.82);
+
+    color:#fff;
+
+}
+
+/* =========================
+   WINDOW STATES
+========================= */
+
+.window.hidden{
+
+    display:none;
+
+}
+
+.window.minimized{
+
+    opacity:0;
+
+    transform:scale(.15);
+
+    pointer-events:none;
+
+}
+
+.window.maximized{
+
+    inset:30px 0 82px 0;
+
+    width:auto;
+
+    height:auto;
+
+    border-radius:12px;
+
+}
+
+/* =========================
+   RESIZE HANDLES
+========================= */
+
+.resize{
+
+    position:absolute;
+
+    z-index:50;
+
+}
+
+.resize.top{
+
+    top:-3px;
+
+    left:0;
+
+    width:100%;
+
+    height:6px;
+
+    cursor:n-resize;
+
+}
+
+.resize.bottom{
+
+    bottom:-3px;
+
+    left:0;
+
+    width:100%;
+
+    height:6px;
+
+    cursor:s-resize;
+
+}
+
+.resize.left{
+
+    left:-3px;
+
+    top:0;
+
+    width:6px;
+
+    height:100%;
+
+    cursor:w-resize;
+
+}
+
+.resize.right{
+
+    right:-3px;
+
+    top:0;
+
+    width:6px;
+
+    height:100%;
+
+    cursor:e-resize;
+
+}
+
+.resize.top-left{
+
+    top:-3px;
+
+    left:-3px;
+
+    width:10px;
+
+    height:10px;
+
+    cursor:nw-resize;
+
+}
+
+.resize.top-right{
+
+    top:-3px;
+
+    right:-3px;
+
+    width:10px;
+
+    height:10px;
+
+    cursor:ne-resize;
+
+}
+
+.resize.bottom-left{
+
+    bottom:-3px;
+
+    left:-3px;
+
+    width:10px;
+
+    height:10px;
+
+    cursor:sw-resize;
+
+}
+
+.resize.bottom-right{
+
+    bottom:-3px;
+
+    right:-3px;
+
+    width:10px;
+
+    height:10px;
+
+    cursor:se-resize;
+
+}
+
+/* =========================
+   WINDOW ANIMATIONS
+========================= */
+
+.window-opening{
+
+    animation:windowOpen .28s ease forwards;
+
+}
+
+.window-closing{
+
+    animation:windowClose .22s ease forwards;
+
+}
+
+@keyframes windowOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes windowClose{
+
+    from{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+}
+
+/* =========================
+   WINDOW HOVER
+========================= */
+
+.window:hover{
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.18);
+
+}
+/* ==========================================================
+   WebOS
+   window.css
+   Part 3
+========================================================== */
+
+/* =========================
+   WINDOW TOOLBAR
+========================= */
+
+.toolbar{
+
+    height:44px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:0 16px;
+
+    background:rgba(255,255,255,.06);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.toolbar button{
+
+    height:30px;
+
+    padding:0 14px;
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.18s;
+
+}
+
+.toolbar button:hover{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+/* =========================
+   STATUS BAR
+========================= */
+
+.statusbar{
+
+    height:28px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 14px;
+
+    font-size:12px;
+
+    color:rgba(255,255,255,.7);
+
+    background:rgba(255,255,255,.04);
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+/* =========================
+   WINDOW SCROLLBAR
+========================= */
+
+.window ::-webkit-scrollbar{
+
+    width:10px;
+
+    height:10px;
+
+}
+
+.window ::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.window ::-webkit-scrollbar-thumb{
+
+    background:rgba(120,120,120,.35);
+
+    border-radius:999px;
+
+}
+
+.window ::-webkit-scrollbar-thumb:hover{
+
+    background:rgba(120,120,120,.6);
+
+}
+
+/* =========================
+   WINDOW FOCUS
+========================= */
+
+.window.active{
+
+    outline:1px solid rgba(255,255,255,.08);
+
+}
+
+.window.inactive .title{
+
+    opacity:.65;
+
+}
+
+.window.inactive .traffic span{
+
+    filter:grayscale(.2);
+
+}
+
+/* =========================
+   WINDOW LOADING
+========================= */
+
+.window.loading::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(2px);
+
+    z-index:500;
+
+}
+
+/* =========================
+   WINDOW UTILITIES
+========================= */
+
+.no-select{
+
+    user-select:none;
+
+}
+
+.center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.fill{
+
+    width:100%;
+
+    height:100%;
+
+}
+
+/* =========================
+   WINDOW SHADOW STATES
+========================= */
+
+.shadow-light{
+
+    box-shadow:
+
+        0 10px 30px rgba(0,0,0,.20);
+
+}
+
+.shadow-heavy{
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,.45);
+
+}
+
+/* =========================
+   WINDOW TRANSITIONS
+========================= */
+
+.window{
+
+    will-change:
+
+        transform,
+
+        opacity,
+
+        width,
+
+        height;
+
+}
+/* ==========================================================
+   WebOS
+   window.css
+   Part 4 (FINAL)
+========================================================== */
+
+/* =========================
+   DRAGGING
+========================= */
+
+.window.dragging{
+
+    transition:none !important;
+
+    cursor:grabbing;
+
+    transform:scale(.995);
+
+    box-shadow:
+        0 40px 90px rgba(0,0,0,.50);
+
+}
+
+/* =========================
+   RESIZING
+========================= */
+
+.window.resizing{
+
+    transition:none !important;
+
+}
+
+/* =========================
+   SNAP PREVIEW
+========================= */
+
+#snap-preview{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    border-radius:18px;
+
+    border:2px solid rgba(0,122,255,.55);
+
+    background:rgba(0,122,255,.15);
+
+    backdrop-filter:blur(12px);
+
+    transition:.2s ease;
+
+    z-index:999;
+
+}
+
+#snap-preview.show{
+
+    opacity:1;
+
+}
+
+/* =========================
+   FULLSCREEN
+========================= */
+
+.window.fullscreen{
+
+    top:30px;
+
+    left:0;
+
+    width:100vw;
+
+    height:calc(100vh - 30px);
+
+    border-radius:0;
+
+}
+
+/* =========================
+   WINDOW STATES
+========================= */
+
+.window.hidden{
+
+    visibility:hidden;
+
+}
+
+.window.visible{
+
+    visibility:visible;
+
+}
+
+/* =========================
+   GENIE PREP
+========================= */
+
+.window.genie{
+
+    transform-origin:bottom center;
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+/* =========================
+   OPEN / CLOSE EFFECT
+========================= */
+
+.window.fade-enter{
+
+    animation:fadeWindow .28s ease forwards;
+
+}
+
+.window.fade-exit{
+
+    animation:fadeWindowOut .22s ease forwards;
+
+}
+
+@keyframes fadeWindow{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px) scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+@keyframes fadeWindowOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:scale(.94);
+
+    }
+
+}
+
+/* =========================
+   PERFORMANCE
+========================= */
+
+.window{
+
+    contain:layout paint style;
+
+    backface-visibility:hidden;
+
+    transform:translateZ(0);
+
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+.window:focus{
+
+    outline:none;
+
+}
+
+/* ==========================================================
+   END OF window.css
+========================================================== */
