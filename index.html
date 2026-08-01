@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WebOS</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:black;
+}
+
+body{
+    background:url("wallpaper.jpg") center/cover no-repeat;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- MENU BAR -->
+
+<header id="menubar">
+
+    <div class="left">
+
+        <span class="apple"></span>
+
+        <span>Finder</span>
+
+        <span>File</span>
+
+        <span>Edit</span>
+
+        <span>View</span>
+
+        <span>Go</span>
+
+        <span>Window</span>
+
+        <span>Help</span>
+
+    </div>
+
+    <div class="right">
+
+        <span id="wifi"></span>
+
+        <span id="battery"></span>
+
+        <span id="clock"></span>
+
+    </div>
+
+</header>
+
+<!-- DESKTOP -->
+
+<main id="desktop">
+
+    <div id="desktop-icons"></div>
+
+</main>
+
+<!-- WINDOWS -->
+
+<section id="window-layer">
+
+</section>
+
+<!-- WEBGL CANVAS -->
+
+<canvas id="genieCanvas"></canvas>
+
+<!-- DOCK -->
+
+<footer id="dock">
+
+    <div id="dock-background"></div>
+
+    <div class="dock-icons">
+
+        <div class="dock-icon" data-app="finder">
+            <img src="icons/finder.png">
+        </div>
+
+        <div class="dock-icon" data-app="terminal">
+            <img src="icons/terminal.png">
+        </div>
+
+        <div class="dock-icon" data-app="notes">
+            <img src="icons/notes.png">
+        </div>
+
+        <div class="dock-icon" data-app="browser">
+            <img src="icons/browser.png">
+        </div>
+
+        <div class="dock-icon" data-app="settings">
+            <img src="icons/settings.png">
+        </div>
+
+        <div class="dock-icon" data-app="trash">
+            <img src="icons/trash.png">
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- CONTEXT MENU -->
+
+<div id="context-menu"></div>
+
+<!-- SPOTLIGHT -->
+
+<div id="spotlight">
+
+    <input
+        id="spotlight-search"
+        type="text"
+        placeholder="Search">
+
+</div>
+
+<!-- NOTIFICATION CENTER -->
+
+<aside id="notification-center"></aside>
+
+<!-- CONTROL CENTER -->
+
+<aside id="control-center"></aside>
+
+<!-- APP TEMPLATES -->
+
+<template id="window-template">
+
+<div class="window">
+
+    <div class="titlebar">
+
+        <div class="traffic">
+
+            <span class="close"></span>
+
+            <span class="minimize"></span>
+
+            <span class="maximize"></span>
+
+        </div>
+
+        <div class="title">
+            App
+        </div>
+
+    </div>
+
+    <div class="content">
+
+    </div>
+
+</div>
+
+</template>
+
+<script src="app.js"></script>
+
+</body>
+</html>
